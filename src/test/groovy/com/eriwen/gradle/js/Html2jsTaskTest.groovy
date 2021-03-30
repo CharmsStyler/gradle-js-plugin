@@ -16,7 +16,11 @@ class Html2jsTaskTest extends Specification {
 
     def setup() {
         project.apply(plugin: JsPlugin)
-        project.repositories.mavenCentral()
+         project.repositories.{
+              maven {
+                url "https://repo1.maven.org/maven2"
+            }
+        }
         task = project.tasks.html2js
         src = dir.newFolder()
         dest = dir.newFile()

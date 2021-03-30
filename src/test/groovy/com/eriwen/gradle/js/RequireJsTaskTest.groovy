@@ -13,10 +13,14 @@ class RequireJsTaskTest extends Specification {
     Project project = ProjectBuilder.builder().build()
     def task
     def src
-
+ 
     def setup() {
         project.apply(plugin: JsPlugin)
-        project.repositories.mavenCentral()
+        project.repositories.{
+              maven {
+                url "https://repo1.maven.org/maven2"
+            }
+        }
         task = project.tasks.requireJs
         src = dir.newFolder()
         task.source = src
